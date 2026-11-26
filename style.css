@@ -1,0 +1,79 @@
+/* ==========================================================================
+   Custom Stylesheet - Portofolio Evelyn Sesilia Putri (Bilingual ID / EN)
+   ========================================================================== */
+
+:root {
+    --pink-primary: #f43f67;
+    --pink-dark: #be123c;
+    --pink-light: #ffe4e9;
+    --pink-bg: #fff5f7;
+}
+
+/* Smooth Scrolling & Base Typography */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+}
+
+/* Custom Scrollbar bertema Pink */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--pink-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #fda4b6;
+    border-radius: 9999px;
+    border: 2px solid var(--pink-bg);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--pink-primary);
+}
+
+/* Tombol Pengalih Bahasa (ID / EN) */
+.lang-btn {
+    color: #9f1239;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.lang-btn:hover:not(.active) {
+    color: #e11d4c;
+}
+
+.lang-btn.active {
+    background-color: #f43f67;
+    color: #ffffff;
+    box-shadow: 0 2px 8px rgba(244, 63, 103, 0.3);
+}
+
+/* Animasi Melayang Halus untuk Badge Kompetensi */
+@keyframes floatSlow {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+.floating-badge {
+    animation: floatSlow 4s ease-in-out infinite;
+}
+
+/* Transisi Modal Lightbox */
+#cert-modal {
+    transition: opacity 0.25s ease;
+}
+
+/* Efek Fokus Aksesibilitas */
+a:focus-visible,
+button:focus-visible,
+[role="button"]:focus-visible {
+    outline: 2px solid var(--pink-primary);
+    outline-offset: 3px;
+}

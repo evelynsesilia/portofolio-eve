@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio | EVELYN SESILIA PUTRI</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        pinksoft: {
+                            50: '#fff5f7',
+                            100: '#ffe4e9',
+                            200: '#fecdd6',
+                            300: '#fda4b6',
+                            400: '#fb718e',
+                            500: '#f43f67',
+                            600: '#e11d4c',
+                            700: '#be123c',
+                            800: '#9f1239',
+                            900: '#881337',
+                        }
+                    },
+                    boxShadow: {
+                        'pink-soft': '0 20px 40px -15px rgba(244, 63, 103, 0.14)',
+                        'pink-card': '0 10px 30px -5px rgba(225, 29, 76, 0.08)',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-pinksoft-50 text-slate-800 antialiased selection:bg-pinksoft-200 selection:text-pinksoft-900 overflow-x-hidden">
+
+    <!-- Dekorasi Latar Belakang Halus -->
+    <div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+        <div class="bg-blob absolute -top-32 -right-32 w-96 h-96 rounded-full bg-pinksoft-200/40 blur-3xl"></div>
+        <div class="bg-blob absolute top-1/3 -left-32 w-80 h-80 rounded-full bg-pinksoft-300/25 blur-3xl"></div>
+        <div class="bg-blob absolute bottom-0 right-1/4 w-96 h-96 rounded-full bg-pinksoft-200/35 blur-3xl"></div>
+    </div>
+
+    <!-- 1. NAVBAR SEDERHANA, RESPONSIF & LANGUAGE SWITCHER (ID / EN) -->
+    <header class="sticky top-0 z-40 w-full backdrop-blur-md bg-white/80 border-b border-pinksoft-100">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 sm:h-20">
+                <!-- Logo / Nama -->
+                <a href="#" class="flex items-center group">
+                    <span class="font-display font-bold text-slate-900 tracking-tight text-lg sm:text-xl group-hover:text-pinksoft-600 transition-colors">
+                        Evelyn
+                    </span>
+                </a>
+
+                <!-- Navigasi Desktop -->
+                <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-600">
+                    <a href="#about" data-i18n="nav_about" class="hover:text-pinksoft-600 transition-colors py-2">Tentang</a>
+                    <a href="#projek" data-i18n="nav_projects" class="hover:text-pinksoft-600 transition-colors py-2">Projek</a>
+                    <a href="#sertifikat" data-i18n="nav_cert" class="hover:text-pinksoft-600 transition-colors py-2">Sertifikat</a>
+                    <a href="#skill" data-i18n="nav_skills" class="hover:text-pinksoft-600 transition-colors py-2">Skill</a>
+                    <a href="#kontak" data-i18n="nav_contact" class="px-5 py-2.5 rounded-full bg-pinksoft-500 text-white hover:bg-pinksoft-600 transition-all shadow-sm hover:shadow-md shadow-pinksoft-500/20">
+                        Kontak
+                    </a>
+
+                    <!-- Pengalih Bahasa Desktop (ID / EN) -->
+                    <div class="inline-flex items-center bg-pinksoft-100/80 p-1 rounded-full border border-pinksoft-200" role="group" aria-label="Pilih Bahasa">
+                        <button type="button" data-lang-btn="id" class="lang-btn active px-3 py-1 rounded-full text-xs font-bold transition-all">ID</button>
+                        <button type="button" data-lang-btn="en" class="lang-btn px-3 py-1 rounded-full text-xs font-bold transition-all">EN</button>
+                    </div>
+                </nav>
+
+                <!-- Kontrol Mobile: Pengalih Bahasa + Hamburger -->
+                <div class="flex items-center gap-2 md:hidden">
+                    <div class="inline-flex items-center bg-pinksoft-100/80 p-1 rounded-full border border-pinksoft-200" role="group" aria-label="Pilih Bahasa">
+                        <button type="button" data-lang-btn="id" class="lang-btn active px-2.5 py-1 rounded-full text-xs font-bold transition-all">ID</button>
+                        <button type="button" data-lang-btn="en" class="lang-btn px-2.5 py-1 rounded-full text-xs font-bold transition-all">EN</button>
+                    </div>
+
+                    <button id="mobile-menu-btn" type="button" aria-label="Buka Menu Navigasi" class="p-2.5 rounded-xl text-pinksoft-700 hover:bg-pinksoft-100 transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dropdown Menu Mobile -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white/95 border-b border-pinksoft-100 px-4 pt-2 pb-5 space-y-1 shadow-lg">
+            <a href="#about" data-i18n="nav_about" class="mobile-link block px-4 py-3 rounded-xl text-sm font-medium text-slate-700 hover:bg-pinksoft-50 hover:text-pinksoft-600">Tentang</a>
+            <a href="#projek" data-i18n="nav_projects" class="mobile-link block px-4 py-3 rounded-xl text-sm font-medium text-slate-700 hover:bg-pinksoft-50 hover:text-pinksoft-600">Projek</a>
+            <a href="#sertifikat" data-i18n="nav_cert" class="mobile-link block px-4 py-3 rounded-xl text-sm font-medium text-slate-700 hover:bg-pinksoft-50 hover:text-pinksoft-600">Sertifikat</a>
+            <a href="#skill" data-i18n="nav_skills" class="mobile-link block px-4 py-3 rounded-xl text-sm font-medium text-slate-700 hover:bg-pinksoft-50 hover:text-pinksoft-600">Skill</a>
+            <a href="#kontak" data-i18n="nav_contact_mobile" class="mobile-link block px-4 py-3 rounded-xl text-sm font-semibold text-pinksoft-600 bg-pinksoft-50">Kontak Saya</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- 2. HERO SECTION (KIRI: NAMA | KANAN: FOTO PROFIL pp.jpeg) -->
+        <section class="relative pt-12 pb-16 sm:pt-20 sm:pb-24 lg:pt-24 lg:pb-28">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+                    
+                    <!-- Kolom Kiri: Nama & Identitas -->
+                    <div class="lg:col-span-7 text-center lg:text-left space-y-6 order-2 lg:order-1">
+                        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-pinksoft-200 shadow-sm">
+                            <span class="w-2.5 h-2.5 rounded-full bg-pinksoft-500 animate-pulse"></span>
+                            <span data-i18n="hero_badge" class="text-xs sm:text-sm font-semibold text-pinksoft-700 tracking-wide">
+                                Pelajar TJKT &bull; SMKN 1 Blitar
+                            </span>
+                        </div>
+
+                        <div class="space-y-2">
+                            <p data-i18n="hero_greeting" class="text-sm sm:text-base font-medium text-pinksoft-600 uppercase tracking-widest">
+                                Halo, Saya
+                            </p>
+                            <h1 class="font-display font-extrabold text-3xl sm:text-5xl lg:text-[3.4rem] text-slate-900 leading-[1.15] tracking-tight">
+                                EVELYN SESILIA <span class="text-transparent bg-clip-text bg-gradient-to-r from-pinksoft-500 to-pinksoft-700">PUTRI</span>
+                            </h1>
+                        </div>
+
+                        <p data-i18n="hero_desc" class="text-base sm:text-lg text-slate-600 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                            Siswi jurusan Teknik Jaringan Komputer dan Telekomunikasi yang antusias merancang sistem basis data terstruktur serta membangun aplikasi kasir yang efisien dan mudah digunakan.
+                        </p>
+
+                        <div class="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-4">
+                            <a href="#projek" data-i18n="hero_btn_projects" class="px-7 py-3.5 rounded-2xl bg-gradient-to-r from-pinksoft-500 to-pinksoft-600 text-white font-semibold text-sm sm:text-base shadow-lg shadow-pinksoft-500/25 hover:shadow-xl hover:-translate-y-0.5 transition-all">
+                                Lihat Projek Saya
+                            </a>
+                            <a href="#kontak" data-i18n="hero_btn_contact" class="px-7 py-3.5 rounded-2xl bg-white text-pinksoft-700 border border-pinksoft-200 font-semibold text-sm sm:text-base hover:bg-pinksoft-50 hover:border-pinksoft-300 transition-all">
+                                Hubungi Saya
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Kolom Kanan: Foto Profil (pp.jpeg) -->
+                    <div class="lg:col-span-5 flex justify-center lg:justify-end order-1 lg:order-2">
+                        <div class="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-[22rem] lg:h-[22rem]">
+                            <!-- Aksen Bingkai Dekoratif -->
+                            <div class="absolute inset-0 rounded-[2.5rem] bg-gradient-to-tr from-pinksoft-400 to-pinksoft-200 rotate-6 scale-105 opacity-70"></div>
+                            <div class="absolute inset-0 rounded-[2.5rem] bg-white -rotate-3 shadow-pink-soft"></div>
+                            
+                            <!-- Bingkai Utama Foto Profil -->
+                            <div class="relative w-full h-full rounded-[2.25rem] overflow-hidden border-4 border-white shadow-xl bg-pinksoft-100">
+                                <img 
+                                    src="pp.jpeg" 
+                                    alt="Foto Profil Evelyn Sesilia Putri" 
+                                    class="w-full h-full object-cover object-center"
+                                    onerror="this.onerror=null; this.src='https://placehold.co/600x600/ffe4e9/be123c?text=Foto+Profil%0A(pp.jpeg)';"
+                                >
+                            </div>
+
+                            <!-- Badge Melayang -->
+                            <div class="floating-badge absolute -bottom-3 -left-3 sm:-bottom-4 sm:-left-4 bg-white/95 backdrop-blur-sm px-4 py-2.5 rounded-2xl shadow-lg border border-pinksoft-100 flex items-center gap-2.5">
+                                <div class="w-8 h-8 rounded-xl bg-pinksoft-100 text-pinksoft-600 flex items-center justify-center">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p data-i18n="badge_label" class="text-[11px] font-medium text-slate-400 leading-none">Kompetensi</p>
+                                    <p data-i18n="badge_value" class="text-xs font-bold text-slate-800 mt-0.5">TJKT &bull; Tersertifikasi UKK</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. BAGIAN ABOUT -->
+        <section id="about" class="py-16 sm:py-20">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-white rounded-[2rem] p-8 sm:p-12 shadow-pink-soft border border-pinksoft-100 relative overflow-hidden">
+                    <!-- Aksen Sudut -->
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-pinksoft-100/80 to-transparent rounded-bl-full pointer-events-none"></div>
+
+                    <div class="text-center max-w-2xl mx-auto space-y-4">
+                        <span data-i18n="about_tag" class="inline-block px-3.5 py-1 rounded-full bg-pinksoft-100 text-pinksoft-700 text-xs font-bold uppercase tracking-wider">
+                            Tentang Saya
+                        </span>
+                        <h2 data-i18n="about_title" class="font-display font-bold text-2xl sm:text-3xl text-slate-900">
+                            Tentang Saya
+                        </h2>
+                        <div class="w-14 h-1.5 bg-gradient-to-r from-pinksoft-400 to-pinksoft-600 rounded-full mx-auto"></div>
+                    </div>
+
+                    <div class="mt-8 text-center space-y-4 text-slate-600 text-base sm:text-lg leading-relaxed">
+                        <p data-i18n="about_p1">
+                            Perkenalkan, nama saya <strong class="text-slate-900 font-semibold">Evelyn Sesilia Putri</strong>. Saat ini saya menempuh pendidikan sebagai pelajar di <strong class="text-pinksoft-700 font-semibold">SMKN 1 Blitar</strong> dengan mengambil jurusan <strong class="text-pinksoft-700 font-semibold">Teknik Jaringan Komputer dan Telekomunikasi (TJKT)</strong>.
+                        </p>
+                        <p data-i18n="about_p2">
+                            Selama menempuh studi di bidang TJKT, saya tidak hanya mempelajari infrastruktur jaringan komputer, tetapi juga mendalami perancangan serta pengelolaan basis data (<em class="text-slate-700">database</em>) dan pengembangan sistem aplikasi kasir yang terstruktur, akurat, dan siap membantu operasional bisnis.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. BAGIAN PROJEK (database.jpeg & kasir.jpeg) -->
+        <section id="projek" class="py-16 sm:py-20">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto space-y-3 mb-12">
+                    <span data-i18n="proj_tag" class="inline-block px-3.5 py-1 rounded-full bg-pinksoft-100 text-pinksoft-700 text-xs font-bold uppercase tracking-wider">
+                        Karya &amp; Praktik
+                    </span>
+                    <h2 data-i18n="proj_title" class="font-display font-bold text-2xl sm:text-3xl text-slate-900">
+                        Projek Saya
+                    </h2>
+                    <p data-i18n="proj_subtitle" class="text-slate-600 text-sm sm:text-base">
+                        Beberapa hasil pengembangan sistem yang telah saya kerjakan selama masa studi di jurusan TJKT.
+                    </p>
+                </div>
+
+                <!-- Grid 2 Kartu Projek -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    
+                    <!-- Projek 1: Database (database.jpeg) -->
+                    <article class="group bg-white rounded-[2rem] overflow-hidden border border-pinksoft-100 shadow-pink-card hover:shadow-pink-soft hover:-translate-y-1.5 transition-all duration-300 flex flex-col">
+                        <div class="relative aspect-video w-full overflow-hidden bg-pinksoft-100">
+                            <img 
+                                src="database.jpeg" 
+                                alt="Projek Sistem Database" 
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                onerror="this.onerror=null; this.src='https://placehold.co/800x450/ffe4e9/be123c?text=Projek+Database%0A(database.jpeg)';"
+                            >
+                            <div class="absolute top-4 left-4">
+                                <span data-i18n="proj1_badge" class="px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-sm text-pinksoft-700 text-xs font-bold shadow-sm">
+                                    Basis Data
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="p-6 sm:p-8 flex-1 flex flex-col justify-between space-y-4">
+                            <div class="space-y-2.5">
+                                <h3 data-i18n="proj1_title" class="font-display font-bold text-xl text-slate-900 group-hover:text-pinksoft-600 transition-colors">
+                                    Sistem Manajemen Database
+                                </h3>
+                                <p data-i18n="proj1_desc" class="text-slate-600 text-sm sm:text-base leading-relaxed">
+                                    Perancangan skema relasional, normalisasi tabel, serta pengelolaan kueri data terstruktur untuk memastikan penyimpanan informasi yang rapi, cepat diakses, dan minim duplikasi.
+                                </p>
+                            </div>
+                            <div class="pt-3 border-t border-pinksoft-50 flex flex-wrap gap-2">
+                                <span data-i18n="proj1_tag1" class="px-3 py-1 rounded-lg bg-pinksoft-50 text-pinksoft-700 text-xs font-medium">Relasi Tabel</span>
+                                <span data-i18n="proj1_tag2" class="px-3 py-1 rounded-lg bg-pinksoft-50 text-pinksoft-700 text-xs font-medium">SQL Query</span>
+                                <span data-i18n="proj1_tag3" class="px-3 py-1 rounded-lg bg-pinksoft-50 text-pinksoft-700 text-xs font-medium">Struktur Data</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Projek 2: Kasir (kasir.jpeg) -->
+                    <article class="group bg-white rounded-[2rem] overflow-hidden border border-pinksoft-100 shadow-pink-card hover:shadow-pink-soft hover:-translate-y-1.5 transition-all duration-300 flex flex-col">
+                        <div class="relative aspect-video w-full overflow-hidden bg-pinksoft-100">
+                            <img 
+                                src="kasir.jpeg" 
+                                alt="Projek Aplikasi Kasir" 
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                onerror="this.onerror=null; this.src='https://placehold.co/800x450/ffe4e9/be123c?text=Projek+Aplikasi+Kasir%0A(kasir.jpeg)';"
+                            >
+                            <div class="absolute top-4 left-4">
+                                <span data-i18n="proj2_badge" class="px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-sm text-pinksoft-700 text-xs font-bold shadow-sm">
+                                    Aplikasi Kasir
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="p-6 sm:p-8 flex-1 flex flex-col justify-between space-y-4">
+                            <div class="space-y-2.5">
+                                <h3 data-i18n="proj2_title" class="font-display font-bold text-xl text-slate-900 group-hover:text-pinksoft-600 transition-colors">
+                                    Aplikasi Kasir &amp; Transaksi
+                                </h3>
+                                <p data-i18n="proj2_desc" class="text-slate-600 text-sm sm:text-base leading-relaxed">
+                                    Sistem pencatatan penjualan yang terintegrasi dengan stok barang, perhitungan total otomatis, serta rekap laporan transaksi harian untuk mempermudah operasional kasir.
+                                </p>
+                            </div>
+                            <div class="pt-3 border-t border-pinksoft-50 flex flex-wrap gap-2">
+                                <span data-i18n="proj2_tag1" class="px-3 py-1 rounded-lg bg-pinksoft-50 text-pinksoft-700 text-xs font-medium">Point of Sale</span>
+                                <span data-i18n="proj2_tag2" class="px-3 py-1 rounded-lg bg-pinksoft-50 text-pinksoft-700 text-xs font-medium">Manajemen Stok</span>
+                                <span data-i18n="proj2_tag3" class="px-3 py-1 rounded-lg bg-pinksoft-50 text-pinksoft-700 text-xs font-medium">Laporan Transaksi</span>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. BAGIAN SERTIFIKAT (sertif.jpeg) -->
+        <section id="sertifikat" class="py-16 sm:py-20">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto space-y-3 mb-12">
+                    <span data-i18n="cert_tag" class="inline-block px-3.5 py-1 rounded-full bg-pinksoft-100 text-pinksoft-700 text-xs font-bold uppercase tracking-wider">
+                        Pencapaian Kompetensi
+                    </span>
+                    <h2 data-i18n="cert_title" class="font-display font-bold text-2xl sm:text-3xl text-slate-900">
+                        Sertifikat UKK
+                    </h2>
+                    <p data-i18n="cert_subtitle" class="text-slate-600 text-sm sm:text-base">
+                        Sertifikat Uji Kompetensi Keahlian (UKK) jurusan Teknik Jaringan Komputer dan Telekomunikasi.
+                    </p>
+                </div>
+
+                <!-- Kartu Sertifikat dengan Klik Zoom -->
+                <div class="bg-white rounded-[2rem] p-5 sm:p-8 border border-pinksoft-100 shadow-pink-soft">
+                    <div 
+                        id="cert-trigger"
+                        role="button"
+                        tabindex="0"
+                        aria-label="Perbesar Sertifikat UKK"
+                        class="group relative rounded-2xl overflow-hidden border-2 border-pinksoft-100 bg-pinksoft-50 cursor-pointer"
+                    >
+                        <img 
+                            id="cert-image"
+                            src="sertif.jpeg" 
+                            alt="Sertifikat UKK Evelyn Sesilia Putri" 
+                            class="w-full max-h-[500px] object-contain mx-auto group-hover:scale-[1.02] transition-transform duration-300"
+                            onerror="this.onerror=null; this.src='https://placehold.co/900x600/ffe4e9/be123c?text=Sertifikat+UKK%0A(sertif.jpeg)';"
+                        >
+                        <!-- Overlay Hover Perbesar -->
+                        <div class="absolute inset-0 bg-pinksoft-900/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <span class="px-5 py-2.5 rounded-full bg-white/95 text-pinksoft-700 font-semibold text-sm shadow-lg flex items-center gap-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/>
+                                </svg>
+                                <span data-i18n="cert_zoom">Klik untuk memperbesar</span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 px-2">
+                        <div>
+                            <h3 data-i18n="cert_card_title" class="font-display font-bold text-lg text-slate-900">
+                                Sertifikat Uji Kompetensi Keahlian (UKK)
+                            </h3>
+                            <p data-i18n="cert_card_desc" class="text-sm text-slate-500">
+                                Teknik Jaringan Komputer dan Telekomunikasi &bull; SMKN 1 Blitar
+                            </p>
+                        </div>
+                        <span class="inline-flex items-center gap-1.5 self-start sm:self-center px-4 py-1.5 rounded-full bg-pinksoft-50 text-pinksoft-700 border border-pinksoft-200 text-xs font-semibold">
+                            <svg class="w-4 h-4 text-pinksoft-500" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            <span data-i18n="cert_status">Tersertifikasi</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. BAGIAN SKILL (RINGKAS & RELEVAN - 4 SKILL INTI) -->
+        <section id="skill" class="py-16 sm:py-20">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto space-y-3 mb-12">
+                    <span data-i18n="skill_tag" class="inline-block px-3.5 py-1 rounded-full bg-pinksoft-100 text-pinksoft-700 text-xs font-bold uppercase tracking-wider">
+                        Keahlian Utama
+                    </span>
+                    <h2 data-i18n="skill_title" class="font-display font-bold text-2xl sm:text-3xl text-slate-900">
+                        Skill Saya
+                    </h2>
+                    <p data-i18n="skill_subtitle" class="text-slate-600 text-sm sm:text-base">
+                        Kompetensi inti yang saya kuasai sesuai bidang TJKT dan pengembangan sistem.
+                    </p>
+                </div>
+
+                <!-- 4 Kartu Skill Minimalis -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                    
+                    <!-- Skill 1 -->
+                    <div class="bg-white rounded-3xl p-6 border border-pinksoft-100 shadow-pink-card hover:border-pinksoft-300 hover:-translate-y-1 transition-all text-center space-y-3">
+                        <div class="w-12 h-12 rounded-2xl bg-pinksoft-100 text-pinksoft-600 flex items-center justify-center mx-auto">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"/>
+                            </svg>
+                        </div>
+                        <h3 data-i18n="skill1_title" class="font-display font-bold text-base text-slate-900">Jaringan Komputer</h3>
+                        <p data-i18n="skill1_desc" class="text-xs text-slate-500 leading-relaxed">Konfigurasi dasar jaringan, routing, dan troubleshooting konektivitas.</p>
+                    </div>
+
+                    <!-- Skill 2 -->
+                    <div class="bg-white rounded-3xl p-6 border border-pinksoft-100 shadow-pink-card hover:border-pinksoft-300 hover:-translate-y-1 transition-all text-center space-y-3">
+                        <div class="w-12 h-12 rounded-2xl bg-pinksoft-100 text-pinksoft-600 flex items-center justify-center mx-auto">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/>
+                            </svg>
+                        </div>
+                        <h3 data-i18n="skill2_title" class="font-display font-bold text-base text-slate-900">Manajemen Database</h3>
+                        <p data-i18n="skill2_desc" class="text-xs text-slate-500 leading-relaxed">Perancangan tabel relasional, pengelolaan SQL, dan integritas data.</p>
+                    </div>
+
+                    <!-- Skill 3 -->
+                    <div class="bg-white rounded-3xl p-6 border border-pinksoft-100 shadow-pink-card hover:border-pinksoft-300 hover:-translate-y-1 transition-all text-center space-y-3">
+                        <div class="w-12 h-12 rounded-2xl bg-pinksoft-100 text-pinksoft-600 flex items-center justify-center mx-auto">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                            </svg>
+                        </div>
+                        <h3 data-i18n="skill3_title" class="font-display font-bold text-base text-slate-900">Aplikasi Kasir</h3>
+                        <p data-i18n="skill3_desc" class="text-xs text-slate-500 leading-relaxed">Pembuatan alur transaksi kasir, stok barang, dan rekap penjualan.</p>
+                    </div>
+
+                    <!-- Skill 4 -->
+                    <div class="bg-white rounded-3xl p-6 border border-pinksoft-100 shadow-pink-card hover:border-pinksoft-300 hover:-translate-y-1 transition-all text-center space-y-3">
+                        <div class="w-12 h-12 rounded-2xl bg-pinksoft-100 text-pinksoft-600 flex items-center justify-center mx-auto">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                            </svg>
+                        </div>
+                        <h3 data-i18n="skill4_title" class="font-display font-bold text-base text-slate-900">Administrasi Sistem</h3>
+                        <p data-i18n="skill4_desc" class="text-xs text-slate-500 leading-relaxed">Instalasi sistem operasi, perawatan perangkat keras &amp; lunak.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. BAGIAN KONTAK (INSTAGRAM PRIBADI & EMAIL) -->
+        <section id="kontak" class="py-16 sm:py-24">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-gradient-to-br from-pinksoft-500 via-pinksoft-600 to-pinksoft-700 rounded-[2.25rem] p-8 sm:p-12 text-white shadow-xl shadow-pinksoft-600/20 relative overflow-hidden">
+                    <!-- Aksen Lingkaran Halus -->
+                    <div class="absolute -top-16 -right-16 w-56 h-56 rounded-full bg-white/10 pointer-events-none"></div>
+                    <div class="absolute -bottom-20 -left-16 w-64 h-64 rounded-full bg-white/10 pointer-events-none"></div>
+
+                    <div class="relative z-10 text-center max-w-xl mx-auto space-y-3 mb-10">
+                        <span data-i18n="contact_tag" class="inline-block px-3.5 py-1 rounded-full bg-white/20 text-white text-xs font-bold uppercase tracking-wider">
+                            Mari Terhubung
+                        </span>
+                        <h2 data-i18n="contact_title" class="font-display font-bold text-2xl sm:text-3xl">
+                            Kontak Saya
+                        </h2>
+                        <p data-i18n="contact_subtitle" class="text-pinksoft-100 text-sm sm:text-base">
+                            Jangan ragu untuk menghubungi saya melalui Instagram pribadi atau Email untuk diskusi maupun kolaborasi.
+                        </p>
+                    </div>
+
+                    <div class="relative z-10 grid grid-cols-1 sm:grid-cols-2 gap-5">
+                        <!-- Kartu Instagram Pribadi -->
+                        <a 
+                            href="https://instagram.com/" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            class="group bg-white/95 hover:bg-white text-slate-800 rounded-2xl p-6 flex items-center gap-4 shadow-md hover:-translate-y-1 transition-all"
+                        >
+                            <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-pinksoft-500 to-rose-400 text-white flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                                </svg>
+                            </div>
+                            <div class="min-w-0">
+                                <p data-i18n="contact_ig_label" class="text-xs font-semibold text-pinksoft-600 uppercase tracking-wider">Instagram Pribadi</p>
+                                <p class="font-display font-bold text-slate-900 truncate">@evelynsesilia</p>
+                                <p data-i18n="contact_ig_action" class="text-xs text-slate-500 mt-0.5">Kunjungi profil Instagram &rarr;</p>
+                            </div>
+                        </a>
+
+                        <!-- Kartu Email dengan Fitur Salin -->
+                        <div class="bg-white/95 hover:bg-white text-slate-800 rounded-2xl p-6 flex items-center justify-between gap-3 shadow-md hover:-translate-y-1 transition-all">
+                            <a href="mailto:evelynsesilia@email.com" class="flex items-center gap-4 min-w-0 flex-1">
+                                <div class="w-12 h-12 rounded-2xl bg-pinksoft-100 text-pinksoft-600 flex items-center justify-center shrink-0">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                    </svg>
+                                </div>
+                                <div class="min-w-0">
+                                    <p data-i18n="contact_email_label" class="text-xs font-semibold text-pinksoft-600 uppercase tracking-wider">Email</p>
+                                    <p id="email-text" class="font-display font-bold text-slate-900 truncate">evelynsesilia@email.com</p>
+                                    <p data-i18n="contact_email_action" class="text-xs text-slate-500 mt-0.5">Kirim pesan langsung &rarr;</p>
+                                </div>
+                            </a>
+                            <button 
+                                id="copy-email-btn"
+                                type="button" 
+                                title="Salin alamat email"
+                                class="p-2.5 rounded-xl bg-pinksoft-50 hover:bg-pinksoft-100 text-pinksoft-700 transition-colors shrink-0"
+                            >
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-pinksoft-100 bg-white/60 py-8">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+            <p class="text-sm text-slate-600">
+                &copy; <span id="year"></span> <strong class="text-slate-900 font-semibold">EVELYN SESILIA PUTRI</strong>. <span data-i18n="footer_rights">Hak cipta dilindungi.</span>
+            </p>
+            <p data-i18n="footer_role" class="text-xs text-pinksoft-600 font-medium">
+                Pelajar TJKT &bull; SMKN 1 Blitar
+            </p>
+        </div>
+    </footer>
+
+    <!-- MODAL LIGHTBOX UNTUK MEMPERBESAR SERTIFIKAT -->
+    <div id="cert-modal" class="fixed inset-0 z-50 hidden bg-slate-900/80 backdrop-blur-sm p-4 sm:p-8 flex items-center justify-center">
+        <div class="relative max-w-4xl w-full bg-white rounded-3xl p-3 sm:p-4 shadow-2xl">
+            <button 
+                id="close-modal-btn" 
+                type="button" 
+                aria-label="Tutup Pratinjau Sertifikat"
+                class="absolute -top-4 -right-4 w-10 h-10 rounded-full bg-pinksoft-600 text-white shadow-lg flex items-center justify-center hover:bg-pinksoft-700 transition-colors"
+            >
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+            </button>
+            <img 
+                id="modal-cert-img"
+                src="sertif.jpeg" 
+                alt="Sertifikat UKK Layar Penuh" 
+                class="w-full max-h-[82vh] object-contain rounded-2xl"
+            >
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFIKASI SALIN EMAIL -->
+    <div id="toast-notification" class="fixed bottom-6 right-6 z-50 hidden items-center gap-2.5 bg-slate-900 text-white px-5 py-3 rounded-2xl shadow-xl text-sm font-medium">
+        <span class="w-2 h-2 rounded-full bg-pinksoft-400"></span>
+        <span data-i18n="toast_copied">Alamat email berhasil disalin!</span>
+    </div>
+
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
